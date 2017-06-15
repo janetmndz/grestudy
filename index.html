@@ -1,0 +1,76 @@
+<html>
+<head>
+	<!--Page Specifications -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="GRE Flip Cards">
+	<meta name="author" content="Janet Mendez">
+	<title>GRE Flip Cards</title>
+	<!--CSS file-->
+	<link rel="stylesheet" type="text/css" href="card-style.css">
+	<!--Scripts-->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/card-js.js"></script>
+</head>
+<body>
+	<div class="body-wrap">
+		<!--Selection -->
+		<div class="selection-tab">
+			<h1>GRE Words Flash Cards</h1>
+			<img src="images/gre-flash.png">
+			<p>practice high frequency GRE words</p>
+			<h2>select how many words:</h2>
+			<div id="10">10</div>
+			<div id="15">15</div>
+			<div id="20">20</div>
+			<div id="25">25</div>
+			<div id="30">30</div>
+			<div id="35">35</div>
+		</div>
+		<div class="crd-wrap">
+			<div class="crd-flip">
+
+				<div class="front-crd">
+					<div class="crd-body">
+					<div class="crd-ques">
+						<h1 class="wrd">WORD</h1>
+						<form>
+
+						<p class="definition"><input type="radio" name="answer" value="0" class="radio1"><span></span></p>
+						<p class="definition"><input type="radio" name="answer" value="0" class="radio2"><span></span></p>
+						<p class="definition"><input type="radio" name="answer" value="0" class="radio3"><span></span></p>
+						</form>
+							<button class="butt check"> check </button> 
+						</div>
+					</div>
+				</div>
+
+				<div class="back-crd">
+					<div class="crd-body">
+					<div class="crd-answer">
+						<h1 class= "wrd-result"></h1>
+						<p>You Picked</p>
+						<p class="result-box incorrect-def">...</p>
+						<p class="answertab">Answer:</p>
+						<p class="result-box correct-def">...</p>
+					</div>
+					<button class="butt next-card">new word</button>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="prog-res-box">
+			<p class="progress"><span class="allwrds">5</span> out of <span class="wrdlist">50</span></p>
+			<div class="missed transhold">
+				<div class="missedwrdlist">
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="about"><a href="http://janetmndz.com" target="_blank">&copy; Janet Mendez 2016</a></div>
+	</div>
+</body>
+</html>

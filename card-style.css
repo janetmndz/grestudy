@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display+SC');
+html {
+	background-color: #e9f7fa;
+	font-family: 'Open Sans';
+	font-size: .9em;
+	width: 100%; height: 100%;
+}
+body{ 
+	margin: 0; padding: 0; 
+	width: 100%; height: 100%;
+	border: 1px solid transparent;
+}
+
+.body-wrap {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+/*SELECTION TAB*/
+.selection-tab{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    z-index: 50;
+    opacity: 1;
+    background: #B2EBF2;
+    font-size: 1.5em;
+    transition: transform .8s;
+}
+.selection-tab h1{
+	margin-top: 5%;
+	font-family: 'Playfair Display SC';
+	text-transform: lowercase;
+}
+.selection-tab h2{
+	font-size: 1.25em;
+	font-family: 'Open Sans';
+}
+.selection-tab h1, .selection-tab h2{
+	color:#EB9532;
+}
+.selection-tab div {
+    display: inline-block;
+    border: 1px solid #EB9532;
+    padding: 1%;
+    margin: 1%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background .8s;
+}
+.selection-tab div:hover {
+    background: #fff;
+    border: 1px #fff;
+}
+/*GENERAL CARD FEATURES*/
+.crd-wrap {
+	margin: 0 auto;
+	position: relative;
+	transform: translateY(15%) rotateY(180deg);
+	-o-transform: translateY(15%);
+	-moz-transform: translateY(15%);
+	-webkit-transform: translateY(15%);
+	height: auto;
+	width: 550px;
+}
+.front-crd, .back-crd {
+	background-color: #fdfdfd;
+	border-radius: 10px;
+	border: 1px solid #bbb;
+}
+
+.crd-flip {
+	max-height:500px;
+	position: relative;
+	transition: 0.8s;
+	transform-style: preserve-3d;
+}
+
+.crd-wrap .crd-flip.flip{
+	transform: rotateY(180deg);
+}
+
+.front-crd, .back-crd{
+	-o-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	width:100%;
+	height:400px;
+	top: 0;
+	left: 0;
+}
+
+.front-crd {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+
+.back-crd {
+	-o-transform: rotateY(180deg) translateY(-100%);
+	-moz-transform: rotateY(180deg) translateY(-100%);
+	-webkit-transform: rotateY(180deg) translateY(-100%);
+	transform: rotateY(180deg) translateY(-100%);
+}
+
+.prog-res-box{
+	position: relative;
+	margin: 0 auto;
+	width: 550px;
+	font-family: 'Open Sans';
+	text-indent: 1em;
+}
+.progress{
+	text-align: center;
+	font-weight: 400;
+	font-size: 1.5em;
+	margin: 8px;
+}
+.prog-res-box h2{
+	color: #FF3333;
+}
+.missed{
+	-webkit-transition: max-height 2s;
+    -moz-transition: max-height 2s;
+    -ms-transition: max-height 2s;
+    -o-transition: max-height 2s;
+    transition: max-height 2s;
+	height: auto;
+}
+.transhold{
+	max-height: 0px;
+}
+.transrel{
+	-webkit-transition: background 1s;
+    -moz-transition: background 1s;
+    -ms-transition: background 1s;
+    -o-transition: background 1s;
+    transition: background 1s;
+	background: #FEFEFE;
+	border-radius: 10px;
+	max-height: 500px;
+}
+.missedwrdlist{
+	padding: 1%;
+}
+.missedwrdlist p{
+	font-size: 1.25em;
+	letter-spacing: 0.05em;
+	line-height: 1.5em;
+}
+
+/*CARD CONTENT*/
+.crd-body{
+	position: relative;
+	margin: 0 auto;
+	height: 100%;
+	width:85%;
+	text-align: center;
+}
+.crd-ques .wrd{
+	font-family: 'Playfair Display SC';
+	font-size: 3em;
+	color: #EB9532;
+	text-transform: lowercase;
+}
+.crd-ques form{
+	width: 85%;
+	margin: 0 auto;
+}
+.crd-ques form .definition {
+	text-align: left;
+	font-family: 'Open Sans';
+	font-size: 1.1em;
+	line-height: 1em;
+	letter-spacing: .110em;
+}
+.crd-answer p{
+	font-family: 'Open Sans';
+	font-size: 1.15em;
+}
+.back-crd .wrd-result{
+	font-family: 'Playfair Display SC';
+	font-size: 2.75em;
+}
+.result-box{
+	width:85%;
+	margin: 0 auto 3% auto;
+	border: 1px solid rgba(0, 0, 0, .25);
+	border-radius: 3px;
+	padding:10px;
+	letter-spacing: .1em;
+	text-align: left;
+}
+.correct-def{ background-color: #BDECB6;}
+.incorrect-def { background-color: #FF6961; }
+.butt{
+	position: absolute;
+	bottom:10%; left:40%;
+	width:20%; height: 10%;
+	font-size: 1.10em;
+	padding: 7px 10px;
+	border-radius:3px; 
+	border: 1px solid #66aecb;
+	background-color:#fff;
+}
+.butt:hover{
+	background-color:#66aecb;
+	color:#fff;
+}
+/*CREDITS*/
+.about{
+	position: relative;
+	bottom:0; 
+	text-align: center;
+	width: 100%;
+	padding: 1%;
+}
+.about a{
+	text-decoration: none;
+	font-size: .85em;
+}
+.about a:visited, .about a:active, .about a:link{
+	color:#000;
+}
+
+@media (max-width: 750px){
+	.selection-tab h1{
+		margin-top:10%;
+		font-size: 1.25em;
+	}
+	.selection-tab img{
+		width: 50%;
+	}
+	.selection-tab p, .selection-tab h2{
+		font-size: .75em;
+	}
+	.selection-tab div{
+		padding: 2%; margin: 2%;
+		font-size: .85em;
+	}
+	.crd-wrap, .prog-res-box{
+		width: 300px;
+	}
+	.crd-flip{
+		max-height: 400px;
+	}
+	.front-crd, .back-crd{
+		height: 300px;
+	}
+	.crd-body, .crd-ques form{
+		width:95%;
+	}
+	.crd-ques .wrd, .back-crd .wrd-result{
+		font-size: 1.75em;
+	}
+	.crd-ques form .definition, .prog-res-box, .crd-answer p, .missedwrdlist p{
+		letter-spacing: normal;
+		font-size: .85em;
+		line-height: 1.15em;
+	}
+	.butt{
+		left:33%;
+		width: 33%;
+		height: 13%;
+		font-size: .85em;
+	}
+	.transrel{
+		max-height: 640px;
+	}
+	.missedwrdlist{
+		padding-left: 3%;
+		text-indent: 0px;
+	}
+}
