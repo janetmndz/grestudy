@@ -11,9 +11,9 @@ Simple project to create a flashcard based website. The purpose of this project 
 
 **Updates to implement**
 1. Development
-..* minor bug fixes
-..* display error messages
-..* create a new page for displaying results of a round
+  * minor bug fixes
+  * display error messages
+  * create a new page for displaying results of a round
 2. Design
-..* work with different font pairings
-..* redesign initial screen
+  * work with different font pairings
+  * redesign initial screen
