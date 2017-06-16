@@ -89,11 +89,12 @@ $(function(){
 			correct = $('.definition').filter('[data-value=1]').text();
 			picked = $('.definition.selectedwrd').text();
 			//If this is the last card also show results
+			console.log(allWords.length + "  :  " + wordList.length);
 			if (allWords.length == wordList.length){
 				$('.next-card').css('display','none');
 				$('.next-card').removeClass('next-card').addClass('see-results');
 				checkVal(correct,picked);
-				console.log(allWords.length + " inside check if end");
+				$('.crd-flip').toggleClass('flip');
 				showWrongWrds();
 				
 			}
@@ -107,7 +108,6 @@ $(function(){
 
 	$('.next-card').click(function(){
 		cword = " "; picked = " "; correct = " ";
-		console.log(correct);
 		$('.definition').attr('data-value','0');
 		selectNewWord();
 		$('.form .definition.selectedwrd').removeClass('selectedwrd');
@@ -166,6 +166,7 @@ $(function(){
 			wrongWords.push(cword);
 			$('.wrd-result').text("wrong").css('color','#FF6961');
 			$('.incorrect-def').text(picked).css('display','block');
+			$('.answertab').css('display','block');
 			$('.correct-def').text(cword.word + ": " + cword.define);
 		}
 		return true;

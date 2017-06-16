@@ -1,0 +1,241 @@
+/*Goggle Fonts*/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display);
+/*Font Variables*/
+/*Color Variables*/
+/*Extends*/
+.full, .absolutefull, .selection-tab, html, body, .body-wrap {
+  width: 100%;
+  height: 100%; }
+
+.absolutefull, .selection-tab {
+  position: absolute;
+  top: 0;
+  bottom: 0; }
+
+.reset, .body-wrap {
+  margin: 0;
+  padding: 0; }
+
+.base-heading, .selection-tab .selection-content h1, .crd-body .crd-ques .wrd {
+  font-family: "Playfair Display", serif;
+  font-size: 4em;
+  letter-spacing: .05em;
+  word-spacing: .15em; }
+
+.base-body, .selection-tab .selection-content h2, .prog-res-box, .prog-res-box .transrel .missedwrdlist p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.5em; }
+
+.base-crd, .crd-body .crd-ques .form .definition, .crd-body .crd-answer p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3em;
+  line-height: 1.3em; }
+
+/*Mixins*/
+/*SASS imports*/
+html, body, ul, ol {
+  margin: 0;
+  padding: 0; }
+
+html {
+  box-sizing: content-box;
+  -moz-box-sizing: content-box; }
+
+/*Basics*/
+html {
+  background-color: rgba(233, 247, 250, 0.5);
+  font-family: "Open Sans", sans-serif; }
+
+/*Selection Tab*/
+.selection-tab {
+  text-align: center;
+  z-index: 25;
+  background-image: url(../images/jeshoots-note4.jpg);
+  background-size: cover;
+  -webkit-transition: transform 0.8s;
+  -moz-transition: transform 0.8s;
+  -ms-transition: transform 0.8s;
+  -o-transition: transform 0.8s;
+  transition: transform 0.8s; }
+  .selection-tab .selection-content {
+    width: 100%;
+    margin-top: 5%;
+    z-index: 100;
+    text-align: center;
+    opacity: 1;
+    background-color: rgba(233, 247, 250, 0.5); }
+    .selection-tab .selection-content img {
+      margin-top: -5%;
+      width: 5%;
+      height: auto; }
+    .selection-tab .selection-content h1, .selection-tab .selection-content h2 {
+      color: #EB9532; }
+    .selection-tab .selection-content div {
+      display: inline-block;
+      padding: 1%;
+      margin: 1%;
+      border: 1px solid #EB9532;
+      border-radius: 25%;
+      cursor: pointer;
+      -webkit-transition: background 0.8s;
+      -moz-transition: background 0.8s;
+      -ms-transition: background 0.8s;
+      -o-transition: background 0.8s;
+      transition: background 0.8s; }
+      .selection-tab .selection-content div:hover {
+        background: #EB9532;
+        border: 1px white solid; }
+
+/*General Card Features*/
+.crd-wrap {
+  margin: 0 auto;
+  position: relative;
+  width: 650px;
+  height: auto;
+  transform: translateY(10%) rotateY(0deg);
+  -o-transform: translateY(10%) rotateY(0deg);
+  -moz-transform: translateY(10%) rotateY(0deg);
+  -webkit-transform: translateY(10%) rotateY(0deg); }
+  .crd-wrap .crd-flip {
+    max-height: 650px;
+    position: relative;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    transition: all 0.8s;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d; }
+    .crd-wrap .crd-flip.flip {
+      transform: translateY(0) rotateY(180deg);
+      -o-transform: translateY(0) rotateY(180deg);
+      -moz-transform: translateY(0) rotateY(180deg);
+      -webkit-transform: translateY(0) rotateY(180deg); }
+  .crd-wrap .front-crd, .crd-wrap .back-crd {
+    width: 100%;
+    height: 550px;
+    top: 0;
+    left: 0;
+    background-color: #FDFDFD;
+    border: 1px solid #bbb;
+    border-radius: 10px;
+    -o-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; }
+  .crd-wrap .front-crd {
+    z-index: 2;
+    transform: rotateY(0deg); }
+  .crd-wrap .back-crd {
+    transform: translateY(-100%) rotateY(180deg);
+    -o-transform: translateY(-100%) rotateY(180deg);
+    -moz-transform: translateY(-100%) rotateY(180deg);
+    -webkit-transform: translateY(-100%) rotateY(180deg); }
+
+/*Main Card Content*/
+.crd-body {
+  position: relative;
+  margin: 0 auto;
+  height: 100%;
+  width: 85%;
+  text-align: center; }
+  .crd-body .crd-ques .wrd {
+    line-height: 1.5em;
+    color: #EB9532;
+    text-transform: lowercase; }
+  .crd-body .crd-ques .form {
+    margin: 0 auto;
+    width: 85%; }
+    .crd-body .crd-ques .form .definition {
+      padding: 3%;
+      display: block;
+      text-align: left;
+      border: 1px solid #EB9532;
+      border-radius: 5px;
+      cursor: pointer; }
+    .crd-body .crd-ques .form .selectedwrd {
+      background-color: #EB9532; }
+    .crd-body .crd-ques .form .alert {
+      color: #FF6961;
+      display: none; }
+  .crd-body .crd-answer .wrd-result {
+    font-family: "Playfair Display", serif;
+    font-size: 2.75em; }
+  .crd-body .crd-answer .result-box {
+    width: 85%;
+    padding: 10px;
+    margin: 1px auto 3% auto;
+    border: 1px solid rgba(233, 247, 250, 0.5);
+    border-radius: .25em;
+    padding: 10px;
+    letter-spacing: .05em;
+    text-align: left; }
+  .crd-body .crd-answer .correct-def {
+    background-color: #BDECB6; }
+  .crd-body .crd-answer .incorrect-def {
+    background-color: #FF6961; }
+  .crd-body .butt {
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+    width: 20%;
+    height: 10%;
+    padding: .5em .625em;
+    background-color: #FDFDFD;
+    font-size: 1.10em;
+    border: 1px solid #66aecb;
+    border-radius: .25em; }
+    .crd-body .butt:hover {
+      background-color: #66aecb;
+      color: #FDFDFD;
+      cursor: pointer; }
+
+/*Below Card & Results*/
+.prog-res-box {
+  position: relative;
+  margin: 0 auto;
+  width: 650px; }
+  .prog-res-box .progress {
+    text-align: center;
+    font-weight: 400;
+    margin: .5em; }
+  .prog-res-box h2 {
+    color: #FF6961; }
+  .prog-res-box .missed {
+    -webkit-transition: max-height 2s;
+    -moz-transition: max-height 2s;
+    -ms-transition: max-height 2s;
+    -o-transition: max-height 2s;
+    transition: max-height 2s;
+    height: auto; }
+  .prog-res-box .transhold {
+    max-height: 0px; }
+  .prog-res-box .transrel {
+    -webkit-transition: background 1s;
+    -moz-transition: background 1s;
+    -ms-transition: background 1s;
+    -o-transition: background 1s;
+    transition: background 1s;
+    background: #FDFDFD;
+    border-radius: 10px;
+    max-height: 650px; }
+    .prog-res-box .transrel .missedwrdlist {
+      padding: 1%; }
+      .prog-res-box .transrel .missedwrdlist p {
+        line-height: 1.5em;
+        letter-spacing: .05em; }
+
+/*Credits and about*/
+.about {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  margin: 3% 0 1% 0; }
+  .about a {
+    text-decoration: none;
+    font-size: 1em; }
+    .about a:visited, .about a:active, .about a:link {
+      color: #000; }
+
+/*# sourceMappingURL=styles.css.map */

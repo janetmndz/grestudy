@@ -1,0 +1,283 @@
+/*Goggle Fonts*/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display);
+/*Font Variables*/
+$open-sans : 'Open Sans', sans-serif;
+$playfair-display: 'Playfair Display', serif;
+ /*Color Variables*/
+ $orange : #EB9532;
+ $trans-grey: rgba(233,247,250,0.5);
+ $basewhite: #FDFDFD;
+ $lightblue: #66aecb;
+ $redwrong: #FF6961;
+ $greencorrect: #BDECB6;
+
+ /*Extends*/
+ .full{
+ 	width: 100%;
+ 	height: 100%;
+ }
+.absolutefull{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	@extend .full;
+}
+.reset {
+	margin: 0;
+	padding: 0;
+}
+.base-heading{
+	font-family: $playfair-display;
+	font-size: 4em;
+	letter-spacing: .05em;
+	word-spacing: .15em;
+}
+.base-body{
+	font-family: $open-sans;
+	font-size: 1.5em;
+}
+.base-crd{
+	font-family: $open-sans;
+	font-size: 1.3em;
+	line-height: 1.3em;
+}
+/*Mixins*/
+@mixin crdlayout($Yval, $degval){
+	transform: translateY($Yval) rotateY($degval);
+	-o-transform: translateY($Yval) rotateY($degval);
+	-moz-transform: translateY($Yval) rotateY($degval);
+	-webkit-transform: translateY($Yval) rotateY($degval);
+}
+@mixin transitions($transition, $transval){
+	-webkit-transition: $transition $transval;
+    -moz-transition: $transition $transval;
+    -ms-transition: $transition $transval;
+    -o-transition: $transition $transval;
+    transition: $transition $transval;
+}
+/*SASS imports*/
+@import 'reset';
+
+/*Basics*/
+ html {
+ 	@extend .full;
+ 	background-color: $trans-grey;
+ 	font-family: $open-sans;
+ }
+ body{
+ 	@extend .full;
+ }
+.body-wrap {
+	@extend .reset, .full;
+}
+/*Selection Tab*/
+.selection-tab{
+	@extend .absolutefull;
+	text-align: center;
+	z-index: 25;
+	background-image: url(../images/jeshoots-note4.jpg);
+	background-size: cover;
+	@include transitions(transform, .8s);
+	.selection-content{
+		width:100%;
+		margin-top: 5%;
+		z-index: 100;
+		text-align: center;
+		opacity: 1;
+		background-color: $trans-grey;
+		img{
+			margin-top: -5%;
+			width: 5%;
+			height: auto;
+		}
+		h1, h2 {
+			color: $orange;
+		}
+		h1{
+			@extend .base-heading;
+		}
+		h2{
+			@extend .base-body;
+		}
+		div{
+			display: inline-block;
+			padding: 1%;
+			margin: 1%;
+			border: 1px solid $orange;
+			border-radius: 25%;
+			cursor: pointer;
+			@include transitions(background, .8s);
+			&:hover{
+				background: $orange;
+				border: 1px white solid;
+			}
+		}
+	}
+}
+/*General Card Features*/
+.crd-wrap{
+	margin: 0 auto;
+	position: relative;
+	width: 650px;
+	height: auto;
+	@include crdlayout(10%, 0deg);
+	.crd-flip{
+		max-height: 650px;
+		position: relative;
+		@include transitions(all, .8s);
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d; 
+		&.flip{
+			@include crdlayout(0,180deg);
+		}
+	}
+	.front-crd, .back-crd{
+		width: 100%;
+		height: 550px;
+		top: 0;
+		left: 0;
+		background-color: $basewhite;
+		border: 1px solid #bbb;
+		border-radius: 10px;
+		-o-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
+	.front-crd{
+		z-index: 2;
+		transform: rotateY(0deg);
+	}
+	.back-crd{
+		@include crdlayout(-100%,180deg);
+	}
+}
+/*Main Card Content*/
+.crd-body{
+	position:relative;
+	margin: 0 auto;
+	height: 100%;
+	width: 85%;
+	text-align: center;
+	.crd-ques{
+		.wrd{
+			@extend .base-heading;
+			line-height: 1.5em;
+			color: $orange;
+			text-transform: lowercase;
+		}
+		.form{
+			margin: 0 auto;
+			width: 85%;
+			.definition{
+				@extend .base-crd;
+				padding:3%;
+				display: block;
+				text-align: left;
+				border: 1px solid $orange;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+			.selectedwrd{
+				background-color: $orange;
+			}
+			.alert{
+				color: $redwrong;
+				display: none;
+			}
+		}
+	}
+	.crd-answer{
+		p{
+			@extend .base-crd;
+		}
+		.wrd-result{
+			font-family: $playfair-display;
+			font-size: 2.75em;
+		}
+		.result-box{
+			width: 85%;
+			padding: 10px;
+			margin: 1px auto 3% auto;
+			border: 1px solid $trans-grey;
+			border-radius: .25em;
+			padding: 10px;
+			letter-spacing: .05em;
+			text-align: left;
+		}
+		.correct-def{
+			background-color: $greencorrect;
+		}
+		.incorrect-def{
+			background-color: $redwrong;
+		}	
+	}
+	.butt{
+		position: absolute;
+		bottom: 10%;
+		left: 40%;
+		width: 20%;
+		height: 10%;
+		padding: .5em .625em;
+		background-color: $basewhite;
+		font-size: 1.10em;
+		border: 1px solid $lightblue;
+		border-radius: .25em;
+		&:hover{
+			background-color: $lightblue;
+			color: $basewhite;
+			cursor: pointer;
+		}
+	}
+}
+/*Below Card & Results*/
+.prog-res-box{
+	position:relative;
+	margin: 0 auto;
+	width: 650px;
+	@extend .base-body;
+	.progress{
+		text-align: center;
+		font-weight: 400;
+		margin: .5em;
+	}
+	h2{
+		color: $redwrong;
+	}
+	.missed{
+		@include transitions(max-height, 2s);
+		height: auto;
+	}
+	.transhold{
+		max-height: 0px;
+	}
+	.transrel{
+		@include transitions(background, 1s);
+		background: $basewhite;
+		border-radius: 10px;
+		max-height: 650px;
+		.missedwrdlist{
+			padding: 1%;
+			p{
+				@extend .base-body;
+				line-height: 1.5em;
+				letter-spacing: .05em;
+			}
+		}
+	}
+}
+/*Credits and about*/
+.about{
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+	margin: 3% 0 1% 0;
+	a{
+		text-decoration: none;
+		font-size: 1em;
+		&:visited, &:active, &:link{
+			color: #000;
+		}
+	}
+}
