@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display+SC');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display');
 html {
-	background-color: #e9f7fa;
+	box-sizing: content-box;
+	background-color: #E9F7FA;
 	font-family: 'Open Sans';
 	font-size: .9em;
 	width: 100%; height: 100%;
@@ -8,7 +9,6 @@ html {
 body{ 
 	margin: 0; padding: 0; 
 	width: 100%; height: 100%;
-	border: 1px solid transparent;
 }
 
 .body-wrap {
@@ -21,37 +21,55 @@ body{
     width: 100%;
     height: 100%;
     position: absolute;
+    top: 0;
+    left: 0;
     text-align: center;
-    z-index: 50;
-    opacity: 1;
-    background: #B2EBF2;
-    font-size: 1.5em;
+    z-index: 25;
+	background-image: url(images/jeshoots-note4.jpg);
+    background-size: cover;
     transition: transform .8s;
 }
-.selection-tab h1{
+.selection-content{
 	margin-top: 5%;
-	font-family: 'Playfair Display SC';
-	text-transform: lowercase;
+	z-index: 100;
+    text-align: center;
+    opacity: 1;
+    font-size: 1.5em;
+    background-color: rgba(233,247,250, 0.5);
+    width:100%;
 }
-.selection-tab h2{
-	font-size: 1.25em;
+.selection-content img{
+	margin-top:-5%;
+	width: 5%;
+	height: auto;
+}
+.selection-content h1{
+	font-family: 'Playfair Display';
+	font-size: 4em;
+	line-height: 2em;
+	letter-spacing: .05em;
+	word-spacing:  .15em;
+}
+.selection-content h2{
+	font-size: 1.5em;
 	font-family: 'Open Sans';
+	font-weight: normal;
 }
-.selection-tab h1, .selection-tab h2{
-	color:#EB9532;
+.selection-content h1, .selection-content h2{
+	color:#E59231;
 }
-.selection-tab div {
+.selection-content div {
     display: inline-block;
     border: 1px solid #EB9532;
     padding: 1%;
     margin: 1%;
-    border-radius: 5px;
+    border-radius: 25%;
     cursor: pointer;
     transition: background .8s;
 }
-.selection-tab div:hover {
-    background: #fff;
-    border: 1px #fff;
+.selection-content div:hover {
+    background: #EB9532;
+    border: 1px #fff solid;
 }
 /*GENERAL CARD FEATURES*/
 .crd-wrap {
@@ -62,7 +80,7 @@ body{
 	-moz-transform: translateY(15%);
 	-webkit-transform: translateY(15%);
 	height: auto;
-	width: 550px;
+	width: 650px;
 }
 .front-crd, .back-crd {
 	background-color: #fdfdfd;
@@ -71,7 +89,7 @@ body{
 }
 
 .crd-flip {
-	max-height:500px;
+	max-height:650px;
 	position: relative;
 	transition: 0.8s;
 	transform-style: preserve-3d;
@@ -87,7 +105,7 @@ body{
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	width:100%;
-	height:400px;
+	height:550px;
 	top: 0;
 	left: 0;
 }
@@ -159,28 +177,41 @@ body{
 	text-align: center;
 }
 .crd-ques .wrd{
-	font-family: 'Playfair Display SC';
-	font-size: 3em;
+	font-family: 'Playfair Display';
+	font-size: 3.5em;
+	line-height: 1.5em;
+	letter-spacing: .05em;
 	color: #EB9532;
 	text-transform: lowercase;
 }
-.crd-ques form{
+.crd-ques .form{
 	width: 85%;
 	margin: 0 auto;
 }
-.crd-ques form .definition {
+.crd-ques .form .definition {
 	text-align: left;
+	display: block;
 	font-family: 'Open Sans';
-	font-size: 1.1em;
-	line-height: 1em;
-	letter-spacing: .110em;
+	font-size: 1.3em;
+	line-height: 1.3em;
+	padding: 3%;
+	border: 1px solid #EB9532;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.crd-ques .form .selectedwrd{
+	background-color: #EB9532;
+}
+.crd-ques .form .alert{
+	color: red;
+	display: none;
 }
 .crd-answer p{
 	font-family: 'Open Sans';
 	font-size: 1.15em;
 }
 .back-crd .wrd-result{
-	font-family: 'Playfair Display SC';
+	font-family: 'Playfair Display';
 	font-size: 2.75em;
 }
 .result-box{
@@ -207,6 +238,7 @@ body{
 .butt:hover{
 	background-color:#66aecb;
 	color:#fff;
+	cursor: pointer;
 }
 /*CREDITS*/
 .about{
@@ -214,7 +246,7 @@ body{
 	bottom:0; 
 	text-align: center;
 	width: 100%;
-	padding: 1%;
+	padding: 1% 0;
 }
 .about a{
 	text-decoration: none;
@@ -248,13 +280,13 @@ body{
 	.front-crd, .back-crd{
 		height: 300px;
 	}
-	.crd-body, .crd-ques form{
+	.crd-body, .crd-ques .form{
 		width:95%;
 	}
 	.crd-ques .wrd, .back-crd .wrd-result{
 		font-size: 1.75em;
 	}
-	.crd-ques form .definition, .prog-res-box, .crd-answer p, .missedwrdlist p{
+	.crd-ques .form .definition, .prog-res-box, .crd-answer p, .missedwrdlist p{
 		letter-spacing: normal;
 		font-size: .85em;
 		line-height: 1.15em;
