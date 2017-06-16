@@ -54,64 +54,63 @@ $(function(){
 	var wordList= []
 	var allWords = [];
 	var wrongWords = [];
-	var cword; var picked; var result;
+	var cword; var picked; var correct;
 
-	$('.selection-tab div').click(function(){
+	$('.selection-content div').click(function(){
 		var n;
 		var $thisid = $(this).attr('id');
-
-		if ($thisid == '10'){
-			n = 10;
-		}
-		else if ($thisid == '15') {
-			n = 15;
-		}
-		else if ($thisid == '20') {
-			n = 20;
-		}
-		else if($thisid == '25'){
-			n = 25;
-		}
-		else if($thisid == '30'){
-			n = 30;
-		}
-		else{
-			n = 35;
-		}
+		n = $thisid;
 
 		wordList = $(shuffleAnswer(wordListMaster).slice(0,n))
 
 		$('.selection-tab').css('transform','translateY(-100%)');
-
 		selectNewWord();
 	});
+	//Activates when a defintion is clicked
+	$('.definition').click(function(){
+		if( $('.form .definition.selectedwrd').length){
+			$('.form .definition.selectedwrd').removeClass('selectedwrd');
+		}
+
+		if ($(this).hasClass('selectedwrd')){
+			$(this).removeClass('selectedwrd');
+		}
+		else{
+			$(this).addClass('selectedwrd');
+		}
+	})
 
 	//Activates once the check button is clicked
 	$('.check').click(function(){
-		result = $('.front-crd .crd-ques form').serialize();
-		picked = $('input:checked').parent().text();
-
-		if (allWords.length == wordList.length){
-			$('.next-card').css('display','none');
-			$('.next-card').removeClass('next-card').addClass('see-results');
-			checkVal(result);
-			showWrongWrds();
-			
-		}
-
-		if (checkVal(result)){
-			$('.crd-flip').toggleClass('flip');
+		if(!$('.definition.selectedwrd').length){
+			$('.alert').css('display','inline');
 		}
 		else{
-			console.log("Nothing was here");
-			//!!! Change to add a warning!!!
-		}	
+			correct = $('.definition').filter('[data-value=1]').text();
+			picked = $('.definition.selectedwrd').text();
+			//If this is the last card also show results
+			if (allWords.length == wordList.length){
+				$('.next-card').css('display','none');
+				$('.next-card').removeClass('next-card').addClass('see-results');
+				checkVal(correct,picked);
+				console.log(allWords.length + " inside check if end");
+				showWrongWrds();
+				
+			}
+			else{
+				checkVal(correct,picked);
+				$('.crd-flip').toggleClass('flip');
+				$('.alert').css('display','none');
+			}
+		}
 	});
 
 	$('.next-card').click(function(){
-		cword = " "; picked = " "; result = " ";
-		$('input').attr('value','0');
+		cword = " "; picked = " "; correct = " ";
+		console.log(correct);
+		$('.definition').attr('data-value','0');
 		selectNewWord();
+		$('.form .definition.selectedwrd').removeClass('selectedwrd');
 		$('.crd-flip').toggleClass('flip');
 	});
 
@@ -128,7 +127,6 @@ $(function(){
 		cword = assignRanWord(nword,allWords);
 		$('.allwrds').text(allWords.length);
 		$('.wrdlist').text(wordList.length);
-		// if(cword != " "){
 		//Assign the word to the screen
 		$('.wrd').text(cword.word);
 
@@ -138,7 +136,7 @@ $(function(){
 		//picks one to be the answer at random
 		var correctDef = $(shuffleAnswer(wordChoices).slice(0,1));
 		correctDef.children('span').text(cword.define);
-		correctDef.children().attr('value','1');
+		correctDef.attr('data-value','1');
 		//set up an array of words already used
 		var usedWords = [cword];
 
@@ -146,7 +144,7 @@ $(function(){
 		for (var i = 0; i < wordChoices.length; i++) {
 			var choice = $(wordChoices[i]);
 			//if the space is a wrong aswer
-			if (choice.children().attr('value') == '0'){
+			if (choice.attr('data-value') == '0'){
 				//get a random word after check
 				var ranword = wordList[rwordIndex()];
 				var assigned = assignRanWord(ranword,usedWords);
@@ -157,26 +155,22 @@ $(function(){
 	} 
 	//Function: Check the if the answer picked is correct
 	//... also checks if a radio was clicked
-	function checkVal (result){
-		if(result){
-			if (result == "answer=1"){
-				$('.wrd-result').text("correct").css('color','#77dd77');
-				$('.correct-def').text(cword.word + ": " + cword.define);
-				$('.incorrect-def').css('display','none');
-				$('.answertab').css('display','none');
-			}
-			else if(result == "answer=0"){
-				wrongWords.push(cword);
-				$('.wrd-result').text("wrong").css('color','#FF6961');
-				$('.incorrect-def').text(picked).css('display','block');
-				$('.correct-def').text(cword.word + ": " + cword.define);
-			}
-			return true;
-			allWords.push(cword);
+	function checkVal (correct,picked){
+		if (correct == picked){
+			$('.wrd-result').text("correct").css('color','#77dd77');
+			$('.correct-def').text(cword.word + ": " + cword.define);
+			$('.incorrect-def').css('display','none');
+			$('.answertab').css('display','none');
 		}
 		else{
-			return false;
+			wrongWords.push(cword);
+			$('.wrd-result').text("wrong").css('color','#FF6961');
+			$('.incorrect-def').text(picked).css('display','block');
+			$('.correct-def').text(cword.word + ": " + cword.define);
 		}
+		return true;
+		allWords.push(cword);
+		
 	}
 
 	//Function: Finding a random index in the wordList
