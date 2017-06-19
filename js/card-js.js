@@ -89,7 +89,6 @@ $(function(){
 			correct = $('.definition').filter('[data-value=1]').text();
 			picked = $('.definition.selectedwrd').text();
 			//If this is the last card also show results
-			console.log(allWords.length + "  :  " + wordList.length);
 			if (allWords.length == wordList.length){
 				$('.next-card').css('display','none');
 				$('.next-card').removeClass('next-card').addClass('see-results');
@@ -114,9 +113,18 @@ $(function(){
 		$('.crd-flip').toggleClass('flip');
 	});
 
-	$('.see-results').click(function(){
-		console.log(wrongWords);
+	$('.answerdetails').click(function(){
+		if ($(window).width() < 750){
+			console.log('small screen');
+		}
+		else{
+			$('.crd-flip').css('display','none');
+			$('.missed').css('display','block');
+			listMissed();
+		}
 	});
+
+	// $('.tryagainbutt').click(history.go(0));
 
 /***** ALL FUNCTIONS *****/
 
@@ -157,14 +165,14 @@ $(function(){
 	//... also checks if a radio was clicked
 	function checkVal (correct,picked){
 		if (correct == picked){
-			$('.wrd-result').text("correct").css('color','#77dd77');
+			$('.wrd-result').text("CORRECT").css('color','#77dd77');
 			$('.correct-def').text(cword.word + ": " + cword.define);
 			$('.incorrect-def').css('display','none');
 			$('.answertab').css('display','none');
 		}
 		else{
 			wrongWords.push(cword);
-			$('.wrd-result').text("wrong").css('color','#FF6961');
+			$('.wrd-result').text("WRONG").css('color','#FF6961');
 			$('.incorrect-def').text(picked).css('display','block');
 			$('.answertab').css('display','block');
 			$('.correct-def').text(cword.word + ": " + cword.define);
@@ -232,14 +240,28 @@ $(function(){
 	}
 
 	function showWrongWrds () {
-		// <h2>missed words: <span class="missedwrds"></span></h2>
-		$('.missedwrdlist').append("<h2> Missed Words : <span class='missedwrds'></span> out of " + wordList.length +"</h2>")
-		for (var i = 0; i < wrongWords.length; i++) {
-			$('.missedwrdlist').append("<p>" + wrongWords[i].word + ": " + wrongWords[i].define + "</p>");
-			console.log(wrongWords[i].word);
+		$('.results-compiled').css('display','block');
+		$('.missednum span').text(wrongWords.length);
+		$('.correctnum span').text((wordList.length - wrongWords.length));
+	}
+
+	function listMissed () {
+		$('.results-compiled').css('display','block');
+		$('.missednum span').text(wrongWords.length);
+		$('.correctnum span').text((wordList.length - wrongWords.length));
+
+		// for (var i = 0; i < wrongWords.length; i++) {
+		// 	$('.missedwrdlist').append('<p class="missedwrd">' + wrongWords[i].word + ': ' + wrongWords[i].define + "</p>");
+		// 	console.log(wrongWords[i].word);
+		// };
+		for (var i = 0; i < wordList.length; i++) {
+			if (wrongWords.includes(wordList[i])){
+				$('.missedwrdlist').append('<p class="missedwrd">' + wordList[i].word + ': ' + wordList[i].define + "</p>");
+			}
+			else{
+				$('.missedwrdlist').append('<p>' + wordList[i].word + ': ' + wordList[i].define + "</p>");
+			}
 		};
 		console.log(wrongWords.length);
-		$('.missedwrds').text(wrongWords.length);
-		$('.missed').removeClass('transhold').addClass('transrel');
 	}
 });
