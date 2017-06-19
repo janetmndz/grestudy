@@ -104,8 +104,6 @@
 		background-color: $basewhite;
 		border: 1px solid #bbb;
 		border-radius: 10px;
-		-o-backface-visibility: hidden;
-		-moz-backface-visibility: hidden;
 		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
 	}

@@ -138,8 +138,6 @@ body {
     background-color: #FDFDFD;
     border: 1px solid #bbb;
     border-radius: 10px;
-    -o-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden; }
   .crd-wrap .front-crd {

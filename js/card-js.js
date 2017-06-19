@@ -115,17 +115,14 @@ $(function(){
 	});
 
 	$('.answerdetails').click(function(){
-		if ($(window).width() < 750){
-			console.log('small screen');
-		}
-		else{
 			$('.crd-flip').css('display','none');
 			$('.missed').css('display','block');
 			listMissed();
-		}
 	});
 
-	// $('.tryagainbutt').click(history.go(0));
+	$('.tryagainbutt').click(function(){
+		window.location.reload();
+	});
 
 /***** ALL FUNCTIONS *****/
 
