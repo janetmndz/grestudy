@@ -3,6 +3,7 @@
 @import 'reset';
 @import 'mixins';
 @import 'base';
+@import 'mediaqueries';
 
 /*Extends*/
 .absolutefull{
@@ -32,6 +33,7 @@
 	line-height: 1.2em;
 }
 
+
 /*Selection Tab*/
 .selection-tab{
 	@extend .absolutefull;
@@ -51,27 +53,47 @@
 		img{
 			width: 6em;
 			height: auto;
+			@include bp(phone){
+				width: 4em;
+			}
 		}
 		h1, h2 {
 			color: $orange;
 		}
 		h1{
 			@extend .base-heading;
+			@include bp(phone){
+				font-size: 2.5em;
+			}
 		}
 		p{
 			@extend .base-crd;
+			@include bp(phone){
+				font-size: 1.15em;
+				line-height: 1.15em;
+				padding: 0 2%;
+			}
 		}
 		h2{
 			@extend .base-body;
 		}
 		div{
 			display: inline-block;
-			padding: 1%;
+			padding: 1.25%;
 			margin: 1%;
 			border: 1px solid $orange;
 			border-radius: 25%;
 			cursor: pointer;
+			@extend .base-crd;
 			@include transitions(background, .8s);
+			@include bp(tablet){
+				font-size: 1.25em;
+				line-height: 1.25em;
+			}
+			@include bp(phone){
+				font-size: 1.15em;
+				padding: 3%;
+			}
 			&:hover{
 				background: $orange;
 				border: 1px white solid;
@@ -83,11 +105,13 @@
 .crd-wrap{
 	margin: 0 auto;
 	position: relative;
-	width: 650px;
+	max-width: 650px;
 	height: auto;
 	@include crdlayout(10%, 0deg);
 	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
+	@include bp(phone){
+		width:90%;
+	}
 	.crd-flip{
 		max-height: 650px;
 		position: relative;
@@ -124,16 +148,26 @@
 	height: 90%;
 	width: 85%;
 	text-align: center;
+	@include bp(phone){
+		height: 75%;
+	}
 	.crd-ques{
 		.wrd{
 			@extend .base-heading;
 			line-height: 1.5em;
 			color: $orange;
 			text-transform: lowercase;
+			@include bp(phone){
+				font-size: 2em;
+				line-height: 1.5em;
+			}
 		}
 		.form{
 			margin: 0 auto;
 			width: 85%;
+			@include bp(phone){
+				width: 100%;
+			}
 			.definition{
 				@extend .base-crd;
 				padding:3%;
@@ -189,6 +223,11 @@
 		font-size: 1.10em;
 		border: 1px solid $lightblue;
 		border-radius: .25em;
+		@include bp(phone){
+			position: relative;
+			width: 40%;
+			bottom: 0;
+		}
 		&:hover{
 			background-color: $lightblue;
 			color: $basewhite;

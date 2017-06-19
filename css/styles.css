@@ -57,7 +57,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 1.4em; }
 
-.base-crd, .selection-tab .selection-content p, .crd-body .crd-ques .form .definition, .crd-body .crd-answer p, .crd-body .results-compiled p {
+.base-crd, .selection-tab .selection-content p, .selection-tab .selection-content div, .crd-body .crd-ques .form .definition, .crd-body .crd-answer p, .crd-body .results-compiled p {
   font-family: "Open Sans", sans-serif;
   font-size: 1.15em;
   line-height: 1.2em; }
@@ -87,11 +87,22 @@ body {
     .selection-tab .selection-content img {
       width: 6em;
       height: auto; }
+      @media only screen and (min-width: 350px), only screen and (min-device-pixel-ratio: 2) {
+        .selection-tab .selection-content img {
+          width: 4em; } }
     .selection-tab .selection-content h1, .selection-tab .selection-content h2 {
       color: #EB9532; }
+    @media only screen and (min-width: 350px), only screen and (min-device-pixel-ratio: 2) {
+      .selection-tab .selection-content h1 {
+        font-size: 2.5em; } }
+    @media only screen and (min-width: 350px), only screen and (min-device-pixel-ratio: 2) {
+      .selection-tab .selection-content p {
+        font-size: 1.15em;
+        line-height: 1.15em;
+        padding: 0 2%; } }
     .selection-tab .selection-content div {
       display: inline-block;
-      padding: 1%;
+      padding: 1.25%;
       margin: 1%;
       border: 1px solid #EB9532;
       border-radius: 25%;
@@ -101,6 +112,14 @@ body {
       -ms-transition: background 0.8s;
       -o-transition: background 0.8s;
       transition: background 0.8s; }
+      @media only screen and (min-width: 750px), only screen and (min-device-pixel-ratio: 1) {
+        .selection-tab .selection-content div {
+          font-size: 1.25em;
+          line-height: 1.25em; } }
+      @media only screen and (min-width: 350px), only screen and (min-device-pixel-ratio: 2) {
+        .selection-tab .selection-content div {
+          font-size: 1.15em;
+          padding: 3%; } }
       .selection-tab .selection-content div:hover {
         background: #EB9532;
         border: 1px white solid; }
@@ -109,14 +128,16 @@ body {
 .crd-wrap {
   margin: 0 auto;
   position: relative;
-  width: 650px;
+  max-width: 650px;
   height: auto;
   transform: translateY(10%) rotateY(0deg);
   -o-transform: translateY(10%) rotateY(0deg);
   -moz-transform: translateY(10%) rotateY(0deg);
   -webkit-transform: translateY(10%) rotateY(0deg);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; }
+  -webkit-backface-visibility: hidden; }
+  @media only screen and (min-width: 350px), only screen and (min-device-pixel-ratio: 2) {
+    .crd-wrap {
+      width: 90%; } }
   .crd-wrap .crd-flip {
     max-height: 650px;
     position: relative;
@@ -158,13 +179,23 @@ body {
   height: 90%;
   width: 85%;
   text-align: center; }
+  @media only screen and (min-width: 350px), only screen and (min-device-pixel-ratio: 2) {
+    .crd-body {
+      height: 75%; } }
   .crd-body .crd-ques .wrd {
     line-height: 1.5em;
     color: #EB9532;
     text-transform: lowercase; }
+    @media only screen and (min-width: 350px), only screen and (min-device-pixel-ratio: 2) {
+      .crd-body .crd-ques .wrd {
+        font-size: 2em;
+        line-height: 1.5em; } }
   .crd-body .crd-ques .form {
     margin: 0 auto;
     width: 85%; }
+    @media only screen and (min-width: 350px), only screen and (min-device-pixel-ratio: 2) {
+      .crd-body .crd-ques .form {
+        width: 100%; } }
     .crd-body .crd-ques .form .definition {
       padding: 3%;
       display: block;
@@ -206,6 +237,11 @@ body {
     font-size: 1.10em;
     border: 1px solid #66aecb;
     border-radius: .25em; }
+    @media only screen and (min-width: 350px), only screen and (min-device-pixel-ratio: 2) {
+      .crd-body .butt {
+        position: relative;
+        width: 40%;
+        bottom: 0; } }
     .crd-body .butt:hover {
       background-color: #66aecb;
       color: #FDFDFD;
