@@ -86,6 +86,8 @@
 	width: 650px;
 	height: auto;
 	@include crdlayout(10%, 0deg);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 	.crd-flip{
 		max-height: 650px;
 		position: relative;

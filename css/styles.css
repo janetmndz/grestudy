@@ -114,7 +114,9 @@ body {
   transform: translateY(10%) rotateY(0deg);
   -o-transform: translateY(10%) rotateY(0deg);
   -moz-transform: translateY(10%) rotateY(0deg);
-  -webkit-transform: translateY(10%) rotateY(0deg); }
+  -webkit-transform: translateY(10%) rotateY(0deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
   .crd-wrap .crd-flip {
     max-height: 650px;
     position: relative;
