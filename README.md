@@ -16,10 +16,12 @@ Simple project to create a flashcard based website. The purpose of this project 
 - [x] minor bug fixes
 - [x] display error messages
 - [x] upgrade to SASS files
-- [ ] create a new page or format to display results orderly
+- [x] create a new page or format to display results orderly
+- [ ] fix "Try Again" button
 - [ ] fix mobile styles
 
 2. **Design**
 - [x] work with different font pairings
 - [x] redesign initial screen
 - [x] fix main card display
+- [ ] fix mobile layout
