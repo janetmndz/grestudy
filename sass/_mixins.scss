@@ -1,0 +1,13 @@
+@mixin crdlayout($Yval, $degval: 0deg){
+	transform: translateY($Yval) rotateY($degval);
+	-o-transform: translateY($Yval) rotateY($degval);
+	-moz-transform: translateY($Yval) rotateY($degval);
+	-webkit-transform: translateY($Yval) rotateY($degval);
+}
+@mixin transitions($transition, $transval){
+	-webkit-transition: $transition $transval;
+    -moz-transition: $transition $transval;
+    -ms-transition: $transition $transval;
+    -o-transition: $transition $transval;
+    transition: $transition $transval;
+}

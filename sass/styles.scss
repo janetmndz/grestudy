@@ -1,26 +1,16 @@
-/*Goggle Fonts*/
-@import url(https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display);
-/*Font Variables*/
-$open-sans : 'Open Sans', sans-serif;
-$playfair-display: 'Playfair Display', serif;
- /*Color Variables*/
- $orange : #EB9532;
- $trans-grey: rgba(233,247,250,0.5);
- $basewhite: #FDFDFD;
- $lightblue: #66aecb;
- $redwrong: #FF6961;
- $greencorrect: #BDECB6;
+/*SASS imports*/
+@import 'variables';
+@import 'reset';
+@import 'mixins';
+@import 'base';
 
- /*Extends*/
- .full{
- 	width: 100%;
- 	height: 100%;
- }
+/*Extends*/
 .absolutefull{
+	width: 100%;
+	height: 100%;
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	@extend .full;
 }
 .reset {
 	margin: 0;
@@ -28,48 +18,20 @@ $playfair-display: 'Playfair Display', serif;
 }
 .base-heading{
 	font-family: $playfair-display;
-	font-size: 4em;
+	font-size: 3.5em;
 	letter-spacing: .05em;
 	word-spacing: .15em;
 }
 .base-body{
 	font-family: $open-sans;
-	font-size: 1.5em;
+	font-size: 1.4em;
 }
 .base-crd{
 	font-family: $open-sans;
-	font-size: 1.3em;
-	line-height: 1.3em;
+	font-size: 1.15em;
+	line-height: 1.2em;
 }
-/*Mixins*/
-@mixin crdlayout($Yval, $degval){
-	transform: translateY($Yval) rotateY($degval);
-	-o-transform: translateY($Yval) rotateY($degval);
-	-moz-transform: translateY($Yval) rotateY($degval);
-	-webkit-transform: translateY($Yval) rotateY($degval);
-}
-@mixin transitions($transition, $transval){
-	-webkit-transition: $transition $transval;
-    -moz-transition: $transition $transval;
-    -ms-transition: $transition $transval;
-    -o-transition: $transition $transval;
-    transition: $transition $transval;
-}
-/*SASS imports*/
-@import 'reset';
 
-/*Basics*/
- html {
- 	@extend .full;
- 	background-color: $trans-grey;
- 	font-family: $open-sans;
- }
- body{
- 	@extend .full;
- }
-.body-wrap {
-	@extend .reset, .full;
-}
 /*Selection Tab*/
 .selection-tab{
 	@extend .absolutefull;
@@ -80,14 +42,14 @@ $playfair-display: 'Playfair Display', serif;
 	@include transitions(transform, .8s);
 	.selection-content{
 		width:100%;
-		margin-top: 5%;
+		height: 60%;
 		z-index: 100;
 		text-align: center;
 		opacity: 1;
 		background-color: $trans-grey;
+		@include crdlayout(25%, 0deg);
 		img{
-			margin-top: -5%;
-			width: 5%;
+			width: 6em;
 			height: auto;
 		}
 		h1, h2 {
@@ -95,6 +57,9 @@ $playfair-display: 'Playfair Display', serif;
 		}
 		h1{
 			@extend .base-heading;
+		}
+		p{
+			@extend .base-crd;
 		}
 		h2{
 			@extend .base-body;
@@ -133,7 +98,7 @@ $playfair-display: 'Playfair Display', serif;
 	}
 	.front-crd, .back-crd{
 		width: 100%;
-		height: 550px;
+		height: 34.375em;
 		top: 0;
 		left: 0;
 		background-color: $basewhite;
@@ -156,7 +121,7 @@ $playfair-display: 'Playfair Display', serif;
 .crd-body{
 	position:relative;
 	margin: 0 auto;
-	height: 100%;
+	height: 90%;
 	width: 85%;
 	text-align: center;
 	.crd-ques{
@@ -188,12 +153,13 @@ $playfair-display: 'Playfair Display', serif;
 		}
 	}
 	.crd-answer{
+		min-height: 70%;
 		p{
 			@extend .base-crd;
 		}
 		.wrd-result{
 			font-family: $playfair-display;
-			font-size: 2.75em;
+			font-size: 3em;
 		}
 		.result-box{
 			width: 85%;
@@ -229,12 +195,48 @@ $playfair-display: 'Playfair Display', serif;
 			cursor: pointer;
 		}
 	}
+	.results-compiled{
+		display: none;
+		width:100%;
+		margin: 0 auto;
+		h3{
+			@extend .base-body;
+			color: $orange;
+		}
+		p{
+			display: inline-block;
+			margin: .5em;
+			padding: .5em;
+			border-radius: .25em;
+			@extend .base-crd;
+		}
+		.answerdetails{
+			border: 1px solid $orange;
+			@include transitions(background-color, .8s);
+			&:hover{
+				cursor: pointer;
+				background-color: $orange;
+			}
+		}
+		.results-expans{
+			width:80%;
+		}
+	}
+}
+/*Set colors for showing results*/
+.missednum{
+	background-color: darken($redwrong, 5%);
+}
+.correctnum{
+	background-color: darken($greencorrect, 5%);
 }
 /*Below Card & Results*/
 .prog-res-box{
-	position:relative;
+	position: relative;
 	margin: 0 auto;
-	width: 650px;
+	width: 85%;
+	height: 10%;
+	bottom: 0;
 	@extend .base-body;
 	.progress{
 		text-align: center;
@@ -243,41 +245,54 @@ $playfair-display: 'Playfair Display', serif;
 	}
 	h2{
 		color: $redwrong;
+		text-align: center;
 	}
 	.missed{
-		@include transitions(max-height, 2s);
-		height: auto;
-	}
-	.transhold{
-		max-height: 0px;
-	}
-	.transrel{
-		@include transitions(background, 1s);
-		background: $basewhite;
-		border-radius: 10px;
-		max-height: 650px;
+		display: none;
+		
+		p{
+			display: inline-block;
+			margin-right: 1em;
+			padding: .5em;
+			border-radius: .25em;
+		}
 		.missedwrdlist{
-			padding: 1%;
+			margin: 0 auto;
 			p{
-				@extend .base-body;
-				line-height: 1.5em;
-				letter-spacing: .05em;
+				margin: 0 0 .5 0;
+				width: 100%;
+			}
+			.missedwrd{
+				background-color: $redwrong;			
+			}
+		}
+		.tryagainbutt{
+			width: 20%;
+			padding: .5em;
+			margin: 0 auto;
+			border: 1px solid $orange;
+			border-radius: .25em;
+			text-align: center;
+			cursor: pointer;
+			@include transitions(background-color,.8s);
+			&:hover{
+
+				background-color: $orange;
 			}
 		}
 	}
-}
-/*Credits and about*/
-.about{
-	position: absolute;
-	bottom: 0;
-	text-align: center;
-	width: 100%;
-	margin: 3% 0 1% 0;
-	a{
-		text-decoration: none;
-		font-size: 1em;
-		&:visited, &:active, &:link{
-			color: #000;
+	/*Credits and about*/
+	.about{
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		a{
+			font-size: 0.6em;
+			line-height: 1.6em;
+			color: lighten($orange,25%);
+			&:hover{
+				color: $orange;
+			}
 		}
 	}
 }
