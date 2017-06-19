@@ -90,6 +90,7 @@ $(function(){
 			picked = $('.definition.selectedwrd').text();
 			//If this is the last card also show results
 			if (allWords.length == wordList.length){
+				console.log('i am here');
 				$('.next-card').css('display','none');
 				$('.next-card').removeClass('next-card').addClass('see-results');
 				checkVal(correct,picked);
