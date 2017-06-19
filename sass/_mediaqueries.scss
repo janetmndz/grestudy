@@ -1,7 +1,7 @@
 @mixin bp($point){
 	$bp-desktop: 1000px;
-	$bp-tablet: 750px;
-	$bp-phone: 350px;
+	$bp-tablet: 780px;
+	$bp-phone: 400px;
 
 	@if $point == desktop {
 		@media
@@ -13,13 +13,13 @@
 	@if $point == tablet {
 		@media
 		only screen and (min-width: #{$bp-tablet}),
-		only screen and (min-device-pixel-ratio: 1) {
+		only screen and (max-device-pixel-ratio: 1) {
 			@content;
 		}
 	}
 	@if $point == phone {
 		@media
-		only screen and (min-width: #{$bp-phone}),
+		only screen and (max-width: #{$bp-phone}),
 		only screen and (min-device-pixel-ratio:2){
 			@content;
 		}
