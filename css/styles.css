@@ -3,6 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display);
 /*Font Variables*/
 /*Color Variables*/
+/*Static Values*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display);
 html, body, ul, ol {
   margin: 0;
@@ -19,6 +20,7 @@ a, a:hover, a:visited, a:active, a:link {
 /*Goggle Fonts*/
 /*Font Variables*/
 /*Color Variables*/
+/*Static Values*/
 html {
   width: 100%;
   height: 100%;
@@ -33,7 +35,9 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  position: relative;
+  overflow: hidden; }
 
 /*Extends*/
 .absolutefull, .selection-tab {
@@ -128,7 +132,8 @@ body {
 .crd-wrap {
   margin: 0 auto;
   position: relative;
-  max-width: 650px;
+  max-width: 35em;
+  max-height: 35em;
   height: auto;
   transform: translateY(10%) rotateY(0deg);
   -o-transform: translateY(10%) rotateY(0deg);
@@ -140,7 +145,7 @@ body {
       width: 90%;
       height: 85%; } }
   .crd-wrap .crd-flip {
-    max-height: 650px;
+    min-height: 35em;
     position: relative;
     -webkit-transition: all 0.8s;
     -moz-transition: all 0.8s;
@@ -158,10 +163,11 @@ body {
       -moz-transform: translateY(0) rotateY(180deg);
       -webkit-transform: translateY(0) rotateY(180deg); }
   .crd-wrap .front-crd, .crd-wrap .back-crd {
+    position: relative;
     width: 100%;
-    max-height: 34.375em;
-    top: 0;
-    left: 0;
+    min-width: 35em;
+    height: 100%;
+    min-height: 35em;
     background-color: #FDFDFD;
     border: 1px solid #bbb;
     border-radius: 10px;
@@ -183,7 +189,7 @@ body {
 .crd-body {
   position: relative;
   margin: 0 auto;
-  height: 90%;
+  height: 100%;
   width: 85%;
   text-align: center; }
   @media only screen and (max-width: 450px), only screen and (min-device-pixel-ratio: 2) {
@@ -244,12 +250,11 @@ body {
     .crd-body .crd-answer .incorrect-def {
       background-color: #FF6961; }
   .crd-body .butt {
-    position: absolute;
-    bottom: 10%;
-    left: 40%;
-    width: 20%;
-    height: 10%;
-    padding: .5em .625em;
+    position: fixed;
+    bottom: 5%;
+    left: 37.5%;
+    width: 25%;
+    padding: 1em;
     background-color: #FDFDFD;
     font-size: 1.10em;
     border: 1px solid #66aecb;
@@ -298,11 +303,12 @@ body {
 
 /*Below Card & Results*/
 .prog-res-box {
-  position: relative;
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
   margin: 0 auto;
-  width: 85%;
+  width: 80%;
   height: 10%;
-  bottom: 0;
   /*Credits and about*/ }
   .prog-res-box .progress {
     text-align: center;
