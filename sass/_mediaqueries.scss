@@ -1,7 +1,7 @@
 @mixin bp($point){
 	$bp-desktop: 1000px;
 	$bp-tablet: 780px;
-	$bp-phone: 400px;
+	$bp-phone: 450px;
 
 	@if $point == desktop {
 		@media

@@ -111,6 +111,7 @@
 	-webkit-backface-visibility: hidden;
 	@include bp(phone){
 		width:90%;
+		height: 85%;
 	}
 	.crd-flip{
 		max-height: 650px;
@@ -118,13 +119,16 @@
 		@include transitions(all, .8s);
 		-webkit-transform-style: preserve-3d;
 		transform-style: preserve-3d; 
+		@include bp(phone){
+			width: 100%;
+		}
 		&.flip{
 			@include crdlayout(0,180deg);
 		}
 	}
 	.front-crd, .back-crd{
 		width: 100%;
-		height: 34.375em;
+		max-height: 34.375em;
 		top: 0;
 		left: 0;
 		background-color: $basewhite;
@@ -132,6 +136,9 @@
 		border-radius: 10px;
 		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
+		@include bp(phone){
+			min-height: 31em;
+		}
 	}
 	.front-crd{
 		z-index: 2;
@@ -150,8 +157,12 @@
 	text-align: center;
 	@include bp(phone){
 		height: 75%;
+		width: 90%;
 	}
 	.crd-ques{
+		@include bp(phone){
+			height: 18em;
+		}
 		.wrd{
 			@extend .base-heading;
 			line-height: 1.5em;
@@ -188,12 +199,18 @@
 	}
 	.crd-answer{
 		min-height: 70%;
+		@include bp(phone){
+			height: 18em;
+		}
 		p{
 			@extend .base-crd;
 		}
 		.wrd-result{
 			font-family: $playfair-display;
 			font-size: 3em;
+			@include bp(phone){
+				font-size: 2.5em;
+			}
 		}
 		.result-box{
 			width: 85%;
@@ -224,9 +241,11 @@
 		border: 1px solid $lightblue;
 		border-radius: .25em;
 		@include bp(phone){
-			position: relative;
-			width: 40%;
-			bottom: 0;
+			width: 6.5em;
+			height: 3em;
+			padding: 1em;
+			bottom: -45%;
+			left: 33%;
 		}
 		&:hover{
 			background-color: $lightblue;
