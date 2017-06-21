@@ -116,6 +116,15 @@ $(function(){
 
 	$('.answerdetails').click(function(){
 			$('.crd-flip').css('display','none');
+			$('.body-wrap').css({
+				'overflow': 'auto',
+				'height': 'auto'
+			});
+			$('.prog-res-box').css({
+				'position': 'relative',
+				'left': '0',
+				'margin': '1.5em auto'
+			});
 			$('.missed').css('display','block');
 			listMissed();
 	});

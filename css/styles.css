@@ -57,7 +57,7 @@ body {
   letter-spacing: .05em;
   word-spacing: .15em; }
 
-.base-body, .selection-tab .selection-content h2, .crd-body .results-compiled h3, .prog-res-box {
+.base-body, .selection-tab .selection-content h2, .crd-body .results-compiled h3, .missed, .prog-res-box {
   font-family: "Open Sans", sans-serif;
   font-size: 1.4em; }
 
@@ -119,7 +119,8 @@ body {
       @media only screen and (max-width: 780px), only screen and (min-device-pixel-ratio: 1) {
         .selection-tab .selection-content div {
           font-size: 1.25em;
-          line-height: 1.25em; } }
+          line-height: 1.25em;
+          padding: 3%; } }
       @media only screen and (max-width: 450px), only screen and (min-device-pixel-ratio: 2) {
         .selection-tab .selection-content div {
           font-size: 1.15em;
@@ -175,7 +176,8 @@ body {
     backface-visibility: hidden; }
     @media only screen and (max-width: 450px), only screen and (min-device-pixel-ratio: 2) {
       .crd-wrap .front-crd, .crd-wrap .back-crd {
-        min-height: 31em; } }
+        min-height: 30em;
+        min-width: 10%; } }
   .crd-wrap .front-crd {
     z-index: 2;
     transform: rotateY(0deg); }
@@ -263,9 +265,7 @@ body {
       .crd-body .butt {
         width: 6.5em;
         height: 3em;
-        padding: 1em;
-        bottom: -45%;
-        left: 33%; } }
+        padding: 1em; } }
     .crd-body .butt:hover {
       background-color: #66aecb;
       color: #FDFDFD;
@@ -281,6 +281,9 @@ body {
       margin: .5em;
       padding: .5em;
       border-radius: .25em; }
+      @media only screen and (max-width: 450px), only screen and (min-device-pixel-ratio: 2) {
+        .crd-body .results-compiled p {
+          margin: auto; } }
     .crd-body .results-compiled .answerdetails {
       border: 1px solid #EB9532;
       -webkit-transition: background-color 0.8s;
@@ -301,6 +304,58 @@ body {
 .correctnum {
   background-color: #abe7a2; }
 
+.missed {
+  display: none;
+  width: 75%;
+  margin: 1em auto;
+  position: relative;
+  height: auto; }
+  @media only screen and (max-width: 450px), only screen and (min-device-pixel-ratio: 2) {
+    .missed {
+      width: 90%; } }
+  .missed p {
+    display: inline-block;
+    margin-right: 1em;
+    padding: .5em;
+    border-radius: .25em; }
+    @media only screen and (max-width: 450px), only screen and (min-device-pixel-ratio: 2) {
+      .missed p {
+        margin: auto;
+        font-size: .75em;
+        margin: .75em;
+        padding: .5em; } }
+  .missed h2 {
+    color: #EB9532;
+    text-align: center; }
+  .missed .missedwrdlist {
+    margin: 0 auto; }
+    .missed .missedwrdlist p {
+      margin: 0 0 .5em 0;
+      width: 100%; }
+      @media only screen and (max-width: 450px), only screen and (min-device-pixel-ratio: 2) {
+        .missed .missedwrdlist p {
+          width: 95%; } }
+    .missed .missedwrdlist .missedwrd {
+      background-color: #FF6961; }
+  .missed .tryagainbutt {
+    width: 20%;
+    padding: .5em;
+    margin: 0 auto;
+    border: 1px solid #EB9532;
+    border-radius: .25em;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: background-color 0.8s;
+    -moz-transition: background-color 0.8s;
+    -ms-transition: background-color 0.8s;
+    -o-transition: background-color 0.8s;
+    transition: background-color 0.8s; }
+    @media only screen and (max-width: 450px), only screen and (min-device-pixel-ratio: 2) {
+      .missed .tryagainbutt {
+        width: 45%; } }
+    .missed .tryagainbutt:hover {
+      background-color: #EB9532; }
+
 /*Below Card & Results*/
 .prog-res-box {
   position: absolute;
@@ -317,35 +372,6 @@ body {
   .prog-res-box h2 {
     color: #FF6961;
     text-align: center; }
-  .prog-res-box .missed {
-    display: none; }
-    .prog-res-box .missed p {
-      display: inline-block;
-      margin-right: 1em;
-      padding: .5em;
-      border-radius: .25em; }
-    .prog-res-box .missed .missedwrdlist {
-      margin: 0 auto; }
-      .prog-res-box .missed .missedwrdlist p {
-        margin: 0 0 .5 0;
-        width: 100%; }
-      .prog-res-box .missed .missedwrdlist .missedwrd {
-        background-color: #FF6961; }
-    .prog-res-box .missed .tryagainbutt {
-      width: 20%;
-      padding: .5em;
-      margin: 0 auto;
-      border: 1px solid #EB9532;
-      border-radius: .25em;
-      text-align: center;
-      cursor: pointer;
-      -webkit-transition: background-color 0.8s;
-      -moz-transition: background-color 0.8s;
-      -ms-transition: background-color 0.8s;
-      -o-transition: background-color 0.8s;
-      transition: background-color 0.8s; }
-      .prog-res-box .missed .tryagainbutt:hover {
-        background-color: #EB9532; }
   .prog-res-box .about {
     position: absolute;
     text-align: center;
